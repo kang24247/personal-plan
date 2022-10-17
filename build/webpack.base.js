@@ -19,9 +19,9 @@ module.exports = {
     module: {
         rules: [
             {
-                // 比如需要引入antd的css,可以把antd的文件目录路径添加解析css规则到include里面
+                // 比如需要引入antd的css,需要单独把antd的文件目录路径添加解析css规则到include里面
                 test: /\.css$/,
-                include: [path.resolve(__dirname, '../src')],
+                include: [path.resolve(__dirname, '../src'),path.resolve(__dirname, '../node_modules/antd/dist/antd.css')],
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
                     'css-loader', 
@@ -34,8 +34,15 @@ module.exports = {
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
                     'css-loader', 
-                    'postcss-loader', 
-                    'less-loader'
+                    'postcss-loader',
+                    {
+                        loader:'less-loader',
+                        options: {
+                            lessOptions: {
+                                javascriptEnabled: true,
+                            },
+                        }
+                    }
                 ]
             },
             {

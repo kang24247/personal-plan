@@ -1,12 +1,12 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
-const baseconfig = require('./webpack.base')
+const baseConfig = require('./webpack.base')
 // 热更新上面已经在devServer中配置hot为true, 
 // 在webpack4中,还需要在插件中添加了HotModuleReplacementPlugin,
 // 在webpack5中,只要devServer.hot为true了,该插件就已经内置了。
 // ReactRefreshWebpackPlugin =>不需要刷新浏览器的前提下模块热更新,并且能够保留react组件的状态。
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-module.exports = merge(baseconfig, {
+module.exports = merge(baseConfig, {
     mode: 'development',
     devtool: 'eval-cheap-module-source-map',//源码映射
     devServer: {

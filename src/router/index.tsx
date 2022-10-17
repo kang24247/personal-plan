@@ -1,6 +1,6 @@
 import React,{ ReactNode, lazy } from "react";
 
-const Login = lazy(()=> import("../pages/login"))
+const Login = lazy(()=> import("../pages/Login"))
 const GlobalIndex = lazy(()=> import("../pages/index"))
 
 export interface IRoute {
@@ -13,6 +13,11 @@ export interface IRoute {
 }
 
 export const routes: IRoute[] = [
+    {
+        path:'/',
+        title:'登录页',
+        component: <Login />
+    },
     {
         path:'/login',
         title:'登录页',
